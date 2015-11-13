@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>SassConf 2015 - Sass Maps</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/mappy.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section class="splash" data-background="#08191d">
+					<h1 class="splash-title">Creating your styles <span class="tiny">with</span><span class="title-main">Sass Maps</span></h1>
+					<p>
+						<small>Lourdes Montano <span>|</span> SassConf 2015 <span>|</span> Austin, TX</small>
+					</p>
+					<!-- <img src="images/splash.jpg" /> -->
+
+					<aside class="notes">
+					   //Hi! Thank you for coming<br><br>
+				       //My 1st time in Austin :)<br><br>
+
+				       This is creating your styles with Sass Maps<br><br>
+				       I'm going to talk about what I've been learning this year
+				    </aside>
+
+				</section>
+
+				<section class="hi-slide main-slide-style" data-background="#08191d">
+
+					<h2>Hi! I’m Lourdes</h2>
+					<p class="position">Front-End Developer @ R/GA Buenos Aires</p>
+					<p class="handle">@loumontano</p>
+
+					<aside class="notes">
+				       - Day to day includes working with responsive HTML CSS JS<br>
+				    </aside>
+				</section>
+
+				<section class="single-text" data-background="#08191d">
+					<p>big scale <span class="bullet">/</span> long term projects</p>
+
+					<aside class="notes">
+				       - Websites with tons of visits / users<br>
+				       - Large teams in different cities / countries<br>
+				       - Big and strong architecture<br>
+				       - Communication is very important<br><br>
+				       - At the beggining of the year I worked on a big project
+				    </aside>
+				</section>
+
+				<section id="fragments" class="fragments-slide" data-background="#08191d">
+					<p>Lots of changes<span class="fragment">...all the time</span></p>
+					<p class="fragment">Interaction with Designers</p>
+					<p class="fragment">Developers</p>
+					<p class="fragment">The client</p> 
+
+					<aside class="notes">
+						- The client wasn't sure about the design direction<br>
+						- Change stuff twice a day, and very quick
+					</aside>
+				</section>
+
+				<section data-background="#08191d">
+					<p class="again">Seriously...</p>
+
+					<aside class="notes"></aside>
+				</section>
+
+				<section class="bazillion" data-background="#08191d">
+					<p>A BAZILLION CHANGES </p>
+					   <p class="option">and then going back to the first option </p>
+					<p class="fragment last">all the time…</p>
+
+					<aside class="notes">
+				      - This was affecting code quality and performance<br><br>
+					  - A code refactor was needed because so many changes made the code not clean<br><br>
+					  - I used to save old code snippets bc I new I had to add them again later
+				    </aside>
+				</section>
+
+				<section data-background="#08191d">
+					<p>I needed a solution for this</p>
+
+					<aside class="notes">
+				      - I was tired and a bit frustated, this was not a good way of working at all<br><br>
+				      - I knew the client wasn't going to change his mind, so I had to find a way to deal with this <br><br>
+				      - I needed an organized solution
+				    </aside>
+				</section>
+
+				<section data-background="#08191d" class="quote">
+					<p class="copy">"We’re not designing <span>pages</span>,<br> 
+						  we’re designing <span>systems of components.</span>"</p>
+
+						<p>Stephen Hay</p>
+					
+
+					<aside class="notes">
+				     - We create components, we think on the parts of the site and how they interact between them<br><br>
+				     - Design and architecture is easier this way<br><br>
+				     - Communication between designers and developers improved
+				    </aside>
+				</section>
+
+				<section data-background="#08191d" class="what-map">
+					<p>you said Maps?</p>
+						<p class="fragment">isn't it difficult?</p>
+
+					<aside class="notes">
+				      //By that time I started reading about maps and could "kind of" understand how it worked…<br><br>
+						//Thought that only ‘the chosen ones’ could work with this<br><br>
+						//We all tell ourselves tricky excuses like ‘I don’t know it perfectly’ or ‘is not fully supported yet'<br><br>
+						//So let's see how it works!
+				    </aside>
+				</section>
+
+				<section data-background="#08191d" class="code-slide">
+
+					<h1>A map looks like...</h1>
+
+					<div class="code-cont">
+						<img src="images/map-look.jpg" />
+					</div>
+
+					<aside class="notes">
+
+					- Maps represent an association between keys and values, where keys are used to look up values.<br><br>
+
+					- So you have a Name<br>
+					- Key<br>
+					- Value associated to its key<br><br>
+
+					- Map keys can be any Sass data type (even another map)<br><br>
+
+					- If you've used languages like JavaScript you may know that a Map is sometimes called a Hash.<br><br>
+
+					- they have a syntax that is very similar to JSON<br><br>
+				    </aside>
+				</section>
+
+				<section data-background="#08191d" class="code-slide">
+
+					<h1 class="call">...and you call it this way</h1>
+
+					<div class="code-cont">
+						<img src="images/map-get.jpg" />
+					</div>
+
+					<aside class="notes">
+
+					- For this, we use the map-get function that looks up values in a map<br><br>
+
+					- We’re going to pass two parameters to it: the name of the map and then the key. <br><br>
+					
+					- So I call a map and a key in order to return its value
+
+				    </aside>
+				</section>
+
+				<section data-background="#08191d" class="key-value">
+					<p>
+						Key / Value data sets <br>
+						Unique list of keys<br>
+						Access to the keys and values<br>
+						Ability to iterate values
+					</p>
+
+					<aside class="notes">
+					So, all in all maps are this
+				    </aside>
+				</section>
+
+				<section data-background="#08191d" class="apply">
+					<p>
+						So, how do I apply this?
+						<span class="think">C'mon, Lou...give me something I can use</span>
+					</p>
+
+					<aside class="notes">
+					//I knew the theory but I didn't find a useful case for my work
+				    </aside>
+				</section>
+
+				<section data-background="#08191d" class="code-slide">
+					<h1 class="theme">Theming with maps</h1>
+					<div class="code-cont">
+						<img src="images/theme1.jpg" />
+					</div>
+
+					<aside class="notes">
+					- for example we want to build themes for the categories on my site<br><br>
+					- And we want to group these theme styles all together inside a map<br><br>
+					<br><br>
+					- For each theme we create a map
+				    </aside>
+				</section>
+
+				<section data-background="#08191d" class="code-slide">
+					<h1 class="theme">Theming with maps</h1>
+					<div class="code-cont">
+						<img src="images/theme2.jpg" />
+					</div>
+
+					<aside class="notes">
+
+					- Whenever we want to use a specific theme for a category we create a loop with the @each directive so we can apply the styles for that theme<br><br>
+
+					- If we want to change the theme with all its properties, we simply call another map and the loop will take care of applying the new values
+				    </aside>
+				</section>
+
+				<section data-background="#08191d" class="code-slide">
+					<h1 class="theme">Theming with maps</h1>
+					<div class="code-cont">
+						<img src="images/theme3.jpg" />
+					</div>
+
+					<aside class="notes">
+					- Here we see the theme styles applied on the computed CSS
+				    </aside>
+				</section>
+
+				<section data-background="#08191d" class="code-slide">
+					<h1 class="colorv">Managing color values</h1>
+					<div class="code-cont">
+						<img src="images/color-variation1.jpg" style="width: 60%;" />
+					</div>
+
+					<aside class="notes">
+					- Here we are going to use the ability of map nesting<br><br>
+
+					- Let's imagine that we want to create color palettes with some color variations<br><br>
+
+					- I create a map called my-colors and inside that map, 2 inner maps with color variation for each one<br><br>
+
+					- Like James Steinbach said, is like the movie Inception (check that the totem is still spinning)<br><br>
+
+				    </aside>
+				</section>
+
+				<section data-background="#08191d" class="code-slide">
+					<h1 class="colorv">Managing color values</h1>
+					<div class="code-cont">
+						<img src="images/color-variation2.jpg" style="width: 100%;" />
+					</div>
+
+					<aside class="notes">
+					- So, we create a function where we add parameters for the color and tone we want to choose<br><br>
+					
+					- We check that this info exists, we use @debug<br><br>
+
+					- And then we return a map-get where we set 2 parameters: the first one, is going to be the map-get function for selecting the map and the color map name, and the second parmeter is going to be the tone.<br><br>
+
+					- If we do not set the second parameter when we call the function, will default to 'base'<br><br>
+
+					- Check that the totem is still spinning :)
+
+				    </aside>
+				</section>
+
+				<section data-background="#08191d" class="code-slide">
+					<h1 class="colorv">Managing color values</h1>
+					<div class="code-cont">
+						<img src="images/color-variation3.jpg" style="width: 75%;" />
+					</div>
+
+					<aside class="notes">
+					- And finally when creating our styles, we call this function with its color and color variation
+				    </aside>
+				</section>
+
+				<section data-background="#08191d" class="final-thoughts">
+					<p class="title">FINAL THOUGHTS</p>
+					
+					<p class="copy">Easy to maintain &amp; modify<br>
+						Better code organization<br>
+						Use maps with a purpose<br>
+						Beware those nested maps!<br>
+						Debug!<br>
+					</p>
+
+					<aside class="notes">
+					- The learning curve may be a bit more complex	<br>
+					- Use it if it suits for your project.<br>
+					- The best technique is the one that makes you feel more confortable and is more performant for your project.
+				    </aside>
+				</section>
+
+				<section data-background="#08191d" class="thanks">
+					<p>				
+						Thank You!
+
+						<span>@loumontano</span>
+
+						<span class="slides-url">http://www.slideshare.net/loumontano/sassconf-maps</span>
+					</p>
+
+					<aside class="notes">
+				    </aside>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
